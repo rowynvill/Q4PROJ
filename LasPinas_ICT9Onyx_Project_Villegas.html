@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Length Conversion Calculator</title>
+	<style type="text/css">
+		body {
+			background-color: #F5F5F5;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			color: #333333;
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+		form {
+			background-color: #FFFFFF;
+			border-radius: 5px;
+			padding: 20px;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+			width: 400px;
+			margin: auto;
+		}
+		label {
+			display: block;
+			font-size: 18px;
+			color: #333333;
+			margin-bottom: 10px;
+		}
+		input[type="number"],
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+			font-size: 16px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+			background-color: #F0F0F0;
+			color: #333333;
+		}
+		button[type="submit"] {
+			background-color: #008CBA;
+			color: white;
+			border: none;
+			padding: 10px;
+			border-radius: 5px;
+			font-size: 18px;
+			cursor: pointer;
+			width: 100%;
+			margin-top: 20px;
+		}
+		#result {
+			font-size: 18px;
+			font-weight: bold;
+			margin-top: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Length Conversion Calculator</h1>
+	<form onsubmit="convertLength(); return false;">
+		<label for="millimeters">Length in Millimeters:</label>
+		<input type="number" id="millimeters" name="millimeters" min="0" required>
+		<label for="centimeters">Centimeters:</label>
+		<input type="text" id="centimeters" name="centimeters" readonly>
+		<label for="meters">Meters:</label>
+		<input type="text" id="meters" name="meters" readonly>
+		<label for="kilometers">Kilometers:</label>
+		<input type="text" id="kilometers" name="kilometers" readonly>
+		<button type="submit">Convert</button>
+		<p id="result"></p>
+	</form>
+
+	<script>
+		function convertLength() {
+			let millimeters = document.getElementById("millimeters").value;
+			let centimeters = millimeters / 10;
+			let meters = millimeters / 1000;
+			let kilometers = millimeters / 1000000;
+			document.getElementById("centimeters").value = centimeters.toFixed(2) + " cm";
+			document.getElementById("meters").value = meters.toFixed(2) + " m";
+			document.getElementById("kilometers").value = kilometers.toFixed(6) + " km";
+			document.getElementById("result").innerHTML = "Converted successfully!";
+		}
+	</script>
+</body>
+</html>
